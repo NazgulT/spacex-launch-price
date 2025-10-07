@@ -13,8 +13,8 @@ makes infographics on spaceflight and spacecraft art. He also makes software
 <p align="center">
   <table>
     <tr>
-      <td><img src="images/spacex-falcon9-scale-tall.png" alt="falcon9_scale" style="width:100%;height:auto;"></td>
-      <td valign="middle">The payload is enclosed in the fairings. Stage two, or the second stage, helps bring
+      <td><img src="images/spacex-falcon9-scale-tall.png" alt="falcon9_scale" style="width:auto;height:100%;"></td>
+      <td valign="top">The payload is enclosed in the fairings. Stage two, or the second stage, helps bring
 the payload to orbit, but most of the work is done by the first stage. The first stage is shown here. This stage does most of the work and is much
 larger than the second stage. Here we see the first stage next to a person and several other landmarks. This stage is quite large and expensive. Unlike other rocket providers, SpaceX's Falcon
 9 Can recover the first stage. Sometimes the first stage does not land. Sometimes it will crash as shown in this clip. Other times, Space X will sacrifice the first stage due to the mission parameters like payload, orbit, and customer</td>
