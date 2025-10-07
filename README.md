@@ -10,7 +10,7 @@ stage will land, we can determine the cost of a launch. Spaces X’s Falcon 9 la
 9, we are going to use these diagrams from Forest Katsch, at  zlsadesign.com. He is a 3D artist and software engineer. He
 makes infographics on spaceflight and spacecraft art. He also makes software. 
 
-<p align="left">
+<p align="center">
   <table>
     <tr>
       <td><img src="images/spacex-falcon9-scale-tall.png" alt="falcon9_scale" style="width:512px;height:1024px;"></td>
