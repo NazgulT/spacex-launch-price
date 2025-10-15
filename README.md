@@ -46,15 +46,22 @@ Implemented Jupyter Notebook: [data-wrangling](EDA/labs-jupyter-spacex-Data%20wr
 In this section, we performed some EDA and feature engineering. We examined relationships between several different features of the data set.
 The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights</code>, <code>Payload Mass vs. Launch Site</code>, <code>Payload Mass vs. Orbit Type</code>.
 
-<img src="images/FlightNumVSPayload.png" alt="payloadvsflights" style="width:auto;height:100%;">
+### <code>Payload Mass vs. Number of Flights</code>
 This scatter plot shows whether the number of flights and the weight of the payload affected the landing success rate. As the number of flighs increases, the first stage was likely to land. More massive the payload the higher the possibility of the successfull return of first stage.
+<img src="images/FlightNumVSPayload.png" alt="payloadvsflights" style="width:auto;height:100%;">
 
-<img src="images/PayloadVSLaunchSite.png" alt="payloadvslaunchsite" style="width:auto;height:100%;">
+
+
+### <code>Payload Mass vs. Launch Site</code>
 This scatter plot explains correlation between landing outcomes and different launch sites. For the Vandenberg Air Force Base Space Launch Complex (VAFB-SLC) launch site, there were no rockets launched for heavy payload mass (greater than 10000). The rest of the launch sites had more successful launches than unsuccessful launches for very heavy payload (more than 12000 kg).​
+<img src="images/PayloadVSLaunchSite.png" alt="payloadvslaunchsite" style="width:auto;height:100%;">
 
+
+### <code>Payload Mass vs. Orbit Type</code>
 <img src="images/PayloadVSOrbit.png" alt="payloadvsorbit" style="width:auto;height:100%;">
 This scatter plot is to reveal the relationship between the weight of the payload and the type of orbit the launch is directed to. We can observe that LEO orbit success is related to the number of flights. The positive landing outcomes are greater for LEO, Polar and ISS. ​
 
+### <code> Yearly Trend</code>
 <img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:100%;">
 By looking the at theaverage yearly trend, we cay say that since 2013 the landing success rate for the first stage kept increasing till 2020.
 
