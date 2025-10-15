@@ -31,7 +31,7 @@ The data for the project was collected using two sources with two difference app
 - by using SpaceX API calls to the the following website: https://api.spacexdata.com/v4/launches/past
 - by performing web scraping via Beautiful Soup to collect Falcon 9 historical launch records from Wikipedia page: https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches
 
-Implemented Jupyter Notebooks: spacex-api, webscraping
+Implemented Jupyter Notebooks: [spacex-api](EDA/jupyter-labs-spacex-data-collection-api.ipynb), [webscraping](EDA/jupyter-labs-webscraping.ipynb)
 
 ## Data Wrangling
 In this section, we performed some Exploratory Data Analysis (EDA) to find some patterns in the data obtained and determine the best label for training the supervised model. 
@@ -39,12 +39,12 @@ In the data set, there are several different cases where the booster did not lan
 
 In this section we mainly converted those outcomes into Training Labels with `1` means the booster successfully landed `0` means it was unsuccessful.
 
-Implemented Jupyter Notebook: data-wrangling
+Implemented Jupyter Notebook: [data-wrangling](EDA/labs-jupyter-spacex-Data%20wrangling.ipynb)
 
 ## EDA with Data Visualisation
 
 In this section, we performed some EDA and feature engineering. We examined relationships between several different features of the data set.
-The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights<code>, <code>Payload Mass vs. Launch Site<code>, <code>Payload Mass vs. Orbit Type<code>.
+The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights</code>, <code>Payload Mass vs. Launch Site</code>, <code>Payload Mass vs. Orbit Type</code>.
 
 <img src="images/FlightNumVSPayload.png" alt="payloadvsflights" style="width:auto;height:100%;">
 This scatter plot shows whether the number of flights and the weight of the payload affected the landing success rate. As the number of flighs increases, the first stage was likely to land. More massive the payload the higher the possibility of the successfull return of first stage.
