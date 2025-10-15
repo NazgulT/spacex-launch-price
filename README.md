@@ -27,3 +27,34 @@ In this project we predicted if the Falcon 9 first stage would land successfully
 
 ##Data Collection
 
+The data for the project was collected using two sources with two difference approaches. 
+- by using SpaceX API calls to the the following website: https://api.spacexdata.com/v4/launches/past
+- by performing web scraping via Beautiful Soup to collect Falcon 9 historical launch records from Wikipedia page: https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches
+
+Implemented Jupyter Notebooks: spacex-api, webscraping
+
+##Data Wrangling
+In this section, we performed some Exploratory Data Analysis (EDA) to find some patterns in the data obtained and determine the best label for training the supervised model. 
+In the data set, there are several different cases where the booster did not land successfully. Sometimes a landing was attempted but failed due to an accident; for example, <code>True Ocean</code> means the mission outcome was successfully  landed to a specific region of the ocean while <code>False Ocean</code> means the mission outcome was unsuccessfully landed to a specific region of the ocean. <code>True RTLS</code> means the mission outcome was successfully  landed to a ground pad <code>False RTLS</code> means the mission outcome was unsuccessfully landed to a ground pad.<code>True ASDS</code> means the mission outcome was successfully landed on  a drone ship <code>False ASDS</code> means the mission outcome was unsuccessfully landed on a drone ship. 
+
+In this section we mainly converted those outcomes into Training Labels with `1` means the booster successfully landed `0` means it was unsuccessful.
+
+Implemented Jupyter Notebook: data-wrangling
+
+##EDA with Data Visualisation
+
+In this section, we performed some EDA and feature engineering. We examined relationships between several different features of the data set.
+The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights<code>, <code>Payload Mass vs. Launch Site<code>, <code>Payload Mass vs. Orbit Type<code>.
+
+<img src="images/FlightNumVSPayload.png" alt="payloadvsflights" style="width:auto;height:100%;">
+This scatter plot shows whether the number of flights and the weight of the payload affected the landing success rate. As the number of flighs increases, the first stage was likely to land. More massive the payload the higher the possibility of the successfull return of first stage.
+
+<img src="images/PayloadVSLaunchSite.png" alt="payloadvslaunchsite" style="width:auto;height:100%;">
+This scatter plot explains correlation between landing outcomes and different launch sites. For the Vandenberg Air Force Base Space Launch Complex (VAFB-SLC) launch site, there were no rockets launched for heavy payload mass (greater than 10000). The rest of the launch sites had more successful launches than unsuccessful launches for very heavy payload (more than 12000 kg).​
+
+<img src="images/PayloadVSOrbit.png" alt="payloadvsorbit" style="width:auto;height:100%;">
+This scatter plot is to reveal the relationship between the weight of the payload and the type of orbit the launch is directed to. We can observe that LEO orbit success is related to the number of flights. The positive landing outcomes are greater for LEO, Polar and ISS. ​
+
+<img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:100%;">
+By looking the at theaverage yearly trend, we cay say that since 2013 the landing success rate for the first stage kept increasing till 2020.
+
