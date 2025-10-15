@@ -58,10 +58,12 @@ This scatter plot explains correlation between landing outcomes and different la
 
 
 ### <code>Payload Mass vs. Orbit Type</code>
-<img src="images/PayloadVSOrbit.png" alt="payloadvsorbit" style="width:auto;height:100%;">
 This scatter plot is to reveal the relationship between the weight of the payload and the type of orbit the launch is directed to. We can observe that LEO orbit success is related to the number of flights. The positive landing outcomes are greater for LEO, Polar and ISS. ​
+<img src="images/PayloadVSOrbit.png" alt="payloadvsorbit" style="width:auto;height:100%;">
+
 
 ### <code> Yearly Trend</code>
-<img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:100%;">
 By looking the at theaverage yearly trend, we cay say that since 2013 the landing success rate for the first stage kept increasing till 2020.
+<img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:100%;">
+
 
