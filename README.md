@@ -1,7 +1,7 @@
 # spacex-launch-price
 Prediction of SpaceX launch prices based on past data on first stage landing success rates.
 
-##Introduction
+## Introduction
 
 The commercial space age is here, companies are making space travel affordable for everyone. Virgin Galactic is providing suborbital spaceflights. Rocket Lab is a small satellite provider. Blue Origin manufactures sub-orbital and orbital
 reusable rockets. Perhaps the most successful is SpaceX. SpaceX’s accomplishments include: Sending spacecraft to the International Space Station. Starlink, a satellite internet constellation providing satellite Internet access. Sending manned missions to Space. One reason SpaceX can do this is the rocket launches are relatively inexpensive. SpaceX advertises Falcon 9 rocket launches on its website with a cost of 62 million dollars; other providers cost upwards of 165 million
@@ -25,7 +25,7 @@ larger than the second stage. Here we see the first stage next to a person and s
 
 In this project we predicted if the Falcon 9 first stage would land successfully. SpaceX advertises Falcon 9 rocket launches on its website with a cost of 62 million dollars; other providers cost upward of 165 million dollars each, much of the savings is because SpaceX can reuse the first stage. Therefore if we can determine if the first stage will land, we can determine the cost of a launch. This information can be used if an alternate company wants to bid against SpaceX for a rocket launch.
 
-##Data Collection
+## Data Collection
 
 The data for the project was collected using two sources with two difference approaches. 
 - by using SpaceX API calls to the the following website: https://api.spacexdata.com/v4/launches/past
@@ -33,7 +33,7 @@ The data for the project was collected using two sources with two difference app
 
 Implemented Jupyter Notebooks: spacex-api, webscraping
 
-##Data Wrangling
+## Data Wrangling
 In this section, we performed some Exploratory Data Analysis (EDA) to find some patterns in the data obtained and determine the best label for training the supervised model. 
 In the data set, there are several different cases where the booster did not land successfully. Sometimes a landing was attempted but failed due to an accident; for example, <code>True Ocean</code> means the mission outcome was successfully  landed to a specific region of the ocean while <code>False Ocean</code> means the mission outcome was unsuccessfully landed to a specific region of the ocean. <code>True RTLS</code> means the mission outcome was successfully  landed to a ground pad <code>False RTLS</code> means the mission outcome was unsuccessfully landed to a ground pad.<code>True ASDS</code> means the mission outcome was successfully landed on  a drone ship <code>False ASDS</code> means the mission outcome was unsuccessfully landed on a drone ship. 
 
@@ -41,7 +41,7 @@ In this section we mainly converted those outcomes into Training Labels with `1`
 
 Implemented Jupyter Notebook: data-wrangling
 
-##EDA with Data Visualisation
+## EDA with Data Visualisation
 
 In this section, we performed some EDA and feature engineering. We examined relationships between several different features of the data set.
 The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights<code>, <code>Payload Mass vs. Launch Site<code>, <code>Payload Mass vs. Orbit Type<code>.
