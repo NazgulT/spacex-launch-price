@@ -66,4 +66,33 @@ This scatter plot is to reveal the relationship between the weight of the payloa
 By looking the at theaverage yearly trend, we cay say that since 2013 the landing success rate for the first stage kept increasing till 2020.
 <img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:100%;">
 
+## EDA with SQL
 
+We have also performed data analysis by loading the SQL extension into jupyter notebook and establishing connection with the spacex dataset. The dataset was downloaded from the link provided in the notebook.
+The following information was discovered during the EDA:
+- NASA launched the total of 45596 kg of payload mass​
+- The average payload mass carried by booster version F9 v1.1 is 2534 kg​
+- The date when the first successful grounding outcome was achieved is 2015-12-22​
+- The total number of successful and failed mission outcomes is 100 and 1, respectively​
+- The booster version which carried the maximum payload mass is F9 B5 B1048.4​
+
+## Built an interactive map with Folium
+
+The launch success rate may depend on payload mass, orbit type, booster type and so on. It may
+also depend on proximities and location of a launch site. Finding an optimal location for building a
+launch site certainly involves many factors and we discovered some of them using the Folium
+library in python.​
+
+- Created a Folium map with the center at NASA Johnson Space center at Houston, Texas – marked by folium circle​
+- Marked each launch site with folium marker. Each site is in close proximity to the coast. One is in California, the other two are in Florida.​
+- Since the same launch site can have many missions both successful (green) and unsuccessful (red), we used folium MarkerCluster() to simplify a map.​
+- The launch sites seem to be located in close proximity to coastline and a certain distance away from cities and railways.​
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img src="images/folium1.png" alt="folium1" style="width:auto;height:100%;"></td>
+      <td><img src="images/folium2.png" alt="folium2" style="width:auto;height:100%;"></td>
+    </tr>
+  </table>
+</p>
