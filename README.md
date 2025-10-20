@@ -75,6 +75,8 @@ This scatter plot is to reveal the relationship between the weight of the payloa
   </table>
 </p>
 
+Implemented Jupyter Notebook: [edaviz](EDA/edadataviz.ipynb)
+
 ## EDA with SQL
 
 We have also performed data analysis by loading the SQL extension into jupyter notebook and establishing connection with the spacex dataset. The dataset was downloaded from the link provided in the notebook.
@@ -84,6 +86,8 @@ The following information was discovered during the EDA:
 - The date when the first successful grounding outcome was achieved is 2015-12-22​
 - The total number of successful and failed mission outcomes is 100 and 1, respectively​
 - The booster version which carried the maximum payload mass is F9 B5 B1048.4​
+
+Implemented Jupyter Notebook: [spacex-sql](EDA/eda-sql_sqlite.ipynb)
 
 ## Built an interactive map with Folium
 
