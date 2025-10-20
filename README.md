@@ -64,9 +64,16 @@ This scatter plot is to reveal the relationship between the weight of the payloa
 <img src="images/PayloadVSOrbit.png" alt="payloadvsorbit" style="width:auto;height:100%;">
 
 
-### <code> Yearly Trend</code>
-By looking the at theaverage yearly trend, we cay say that since 2013 the landing success rate for the first stage kept increasing till 2020.
-<img src="images/YearlyTrend.png" alt="yearlytrend" style="width:auto;height:auto;">
+### <code> Yearly Trend and Success Rate per Orbit</code>
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img style="width:auto;height:100%; alt="YearlyTrend" src="https://github.com/user-attachments/assets/3a1f2a37-d1ae-414a-aff7-6c7577fb12a3" /> <em>Since 2013 the landing success rate for the first stage kept increasing till 2020</em></td>
+      <td><img style="width:auto;height:100%; alt="Orbitvssuccessrate" src="https://github.com/user-attachments/assets/9b161143-eda6-4d41-a3e9-e01a9ad5992e" /> <em>The ES-L1, GEO, HEO and SSO have the highest success rates amongst all other orbits.​</em></td>
+    </tr>
+  </table>
+</p>
 
 ## EDA with SQL
 
@@ -86,9 +93,10 @@ launch site certainly involves many factors and we discovered some of them using
 library in python.​
 
 - Created a Folium map with the center at NASA Johnson Space center at Houston, Texas – marked by folium circle​
-- Marked each launch site with folium marker. Each site is in close proximity to the coast. One is in California, the other two are in Florida.​
+- Marked each launch site with folium marker. Each site is in cvery lose proximity to the coast. The VAFS launch site is in California, the other three are in Florida.​
 - Since the same launch site can have many missions both successful (green) and unsuccessful (red), we used folium MarkerCluster() to simplify a map.​
-- The launch sites seem to be located in close proximity to coastline and a certain distance away from cities and railways.​
+- The launch sites seem to be located in close proximity to coastline, roads and railways but  a certain distance away from cities.​ CCAFS is 23km away from Titusville, while VAFS is 14km away from the nearest city.
+- Note: the Folium map and Plotly dashboards distinguish between CCAFS LC-40 and CCAF SLC-40 sites. They are located next to each other but have two separate launching sites.
 
 <p align="center">
   <table>
@@ -98,3 +106,47 @@ library in python.​
     </tr>
   </table>
 </p>
+
+## Interactive Dashboard
+
+The Plotly dahsboards were focused on correlations between features and success rates. The following conclusions were made by analysing them:
+- The KSC LC-39A, clearly has the higher success rate amongst others with the the rate being 42%.
+- However, if we take into consideration that CCAFS LC-40 and SLC-40 launch sites are the same, then their success rate adds up to be the same - 42%.
+- The most successes fell into the 2k-6k kg of payload mass.
+- The booster version that seems to be related to success is FT booster.
+  
+<img width="1406" height="489" alt="AllSites" src="https://github.com/user-attachments/assets/c91a3aa5-7e35-4ed7-a2dd-65a15df8bc38" /> <em>Success rates for all launch sites. The CCAFS sites combined for 42%, same as the KSC LC-39A site. </em>
+
+<img width="1424" height="490" alt="KSCLC39A" src="https://github.com/user-attachments/assets/be5d7c4a-26ca-47fa-8e83-b930a5154fc0" /><em> Success rate for the KSC LC-39A</em>
+
+<img width="1427" height="715" alt="Payload" src="https://github.com/user-attachments/assets/4a1b6b77-2c06-49cf-9913-49d5d9d1cb4e" /><em>The most succeesful missions fall into 2k-6k payload mass, with FT being the most used booster version with those missions.</em>
+
+## Predictive Analysis (Classification)
+
+In this section we tried to answer the main questions: what makes the launch successful? This is made possible by using machine learning algorithms. During EDA, we identified those features that correlated positively with the success rate. The final list of those features are: <code>FlightNumber	Date	BoosterVersion	PayloadMass	Orbit	LaunchSite	Outcome	Flights	GridFins	Reused	Legs	LandingPad	Block	ReusedCount	Serial</code>. Before we trained the ML classification models with the dataset, the categorical data was one-hot transformed and missing values handled. The dataset was split into training and testing sets with the 80/20 ratio. 
+<code>GridSearch</code> pipeline was used to find the best parameters for the following ML classifiers:
+
+- **Logistic Regression** tuned parameters: {'C': 0.01, 'penalty': 'l2', 'solver': 'lbfgs'}, train accuracy: 85%, test accuracy: **83.3%**
+- **Support Vector Machines** tuned parameters: {'C': 1.0, 'gamma': 0.03162277660168379, 'kernel': 'sigmoid'}, train accuracy: 85%, test accuracy: **83.3%**
+- **Decision Trees** tuned parameters: {'criterion': 'gini', 'max_depth': 6, 'max_features': 'sqrt', 'min_samples_leaf': 4, 'min_samples_split': 2, 'splitter': 'random'}, train accuracy: 88.9%, test accuracy: **88.9%**
+- **kNN** tuned parameters: {'algorithm': 'auto', 'n_neighbors': 10, 'p': 1}, train accuracy: 85%, test accuracy: **83.3%**
+
+<p align="center">
+  <table>
+    <tr>
+      <td><img style="width:auto;height:100%; alt="bestmodelbarplot" src="https://github.com/user-attachments/assets/ac5c1a0a-fdc6-4e2f-89c0-d913255e9bb3" /><em>The best performing model is the Decision Tree classifier.</em></td>
+      <td><img style="width:auto;height:100%; alt="confmatrixtree" src="https://github.com/user-attachments/assets/ba37766b-1c5c-42db-8892-b2bb3ca26725" />The confusion matrix of the best performing model</td>
+    </tr>
+  </table>
+</p>
+
+## Conclusion
+
+- First stage landings became more successful with the passage of time. The success rate increased to 80% in 2017 as compared to previous landings.
+- Launch site were kept close to coastlines, railways and road, but away from cities.​
+- Launch site with the highest success rate is Kennedy Space Center – KSC LC 39A. The payload mass up to 7000 and the FT booster version have positive correlations with mission success across sites.​
+- Amongst all four classification models, the Decision tree classifier performedslightly better than the rest with test accuracy of 88.9% while others were at 83.3%.
+
+Looks as SpaceY will benefit from using data from the SpaceX when it comes to building launch sites and performing rocket launches as SpaceX has been succeeding since 2017. SpaceY needs to build launch sites near coastlines, railways and roads, but away from cities. Using payloads between 2k and 6k along with FT boosters seem to be correlating with success missions. The predictions can be trusted as the classification accuracy of almost 89% is quite high.
+
+
