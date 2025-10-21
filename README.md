@@ -3,12 +3,19 @@ Prediction of SpaceX launch prices based on past data on first stage landing suc
 
 ## Introduction
 
-The commercial space age is here, companies are making space travel affordable for everyone. Virgin Galactic is providing suborbital spaceflights. Rocket Lab is a small satellite provider. Blue Origin manufactures sub-orbital and orbital
-reusable rockets. Perhaps the most successful is SpaceX. SpaceX’s accomplishments include: Sending spacecraft to the International Space Station. Starlink, a satellite internet constellation providing satellite Internet access. Sending manned missions to Space. One reason SpaceX can do this is the rocket launches are relatively inexpensive. SpaceX advertises Falcon 9 rocket launches on its website with a cost of 62 million dollars; other providers cost upwards of 165 million
-dollars each, much of the savings is because SpaceX can reuse the first stage. Therefore, if we can determine if the first
-stage will land, we can determine the cost of a launch. Spaces X’s Falcon 9 launch like regular rockets. To help us understand the scale of the Falcon
-9, we are going to use these diagrams from Forest Katsch, at  zlsadesign.com. He is a 3D artist and software engineer. He
-makes infographics on spaceflight and spacecraft art. He also makes software. 
+The commercial space age is here, companies are making space travel affordable for everyone. 
+- Virgin Galactic is providing suborbital spaceflights.
+- Rocket Lab is a small satellite provider.
+- Blue Origin manufactures sub-orbital and orbital reusable rockets.
+  
+Perhaps the most successful is SpaceX. SpaceX’s accomplishments include:
+- Sending spacecraft to the International Space Station.
+- Starlink, a satellite internet constellation providing satellite Internet access.
+- Sending manned missions to Space.
+  
+One reason SpaceX can do this is the rocket launches are relatively inexpensive. SpaceX advertises Falcon 9 rocket launches on its website with a cost of 62 million dollars; other providers cost upwards of 165 million
+dollars each, much of the savings is because SpaceX can reuse the first stage. SpacesX’s Falcon 9 launches like regular rockets. To help us understand the scale of the Falcon
+9, we are going to use the diagram below from Forest Katsch, at [zlsadesign.com](zlsadesign.com). He is a 3D artist and software engineer.
 
 <p align="center">
   <table>
@@ -22,22 +29,30 @@ larger than the second stage. Here we see the first stage next to a person and s
   </table>
 </p>
 
-
-In this project we predicted if the Falcon 9 first stage would land successfully. SpaceX advertises Falcon 9 rocket launches on its website with a cost of 62 million dollars; other providers cost upward of 165 million dollars each, much of the savings is because SpaceX can reuse the first stage. Therefore if we can determine if the first stage will land, we can determine the cost of a launch. This information can be used if an alternate company wants to bid against SpaceX for a rocket launch.
+In this project we predicted if the Falcon 9 first stage would land successfully. If we can determine if the first stage will land, we can determine the cost of a launch. This information can be used if an alternate company, say SpaceY, wants to bid against SpaceX for a rocket launch.
 
 ## Data Collection
 
 The data for the project was collected using two sources with two difference approaches. 
-- by using SpaceX API calls to the the following website: https://api.spacexdata.com/v4/launches/past
-- by performing web scraping via Beautiful Soup to collect Falcon 9 historical launch records from Wikipedia page: https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches
+- by using SpaceX API calls to the the [spacex website](https://api.spacexdata.com/v4/launches/past)
+- by performing web scraping via Beautiful Soup to collect Falcon 9 historical launch records from [Wikipedia page](https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches)
 
 Implemented Jupyter Notebooks: [spacex-api](EDA/jupyter-labs-spacex-data-collection-api.ipynb), [webscraping](EDA/jupyter-labs-webscraping.ipynb)
 
 ## Data Wrangling
 In this section, we performed some Exploratory Data Analysis (EDA) to find some patterns in the data obtained and determine the best label for training the supervised model. 
-In the data set, there are several different cases where the booster did not land successfully. Sometimes a landing was attempted but failed due to an accident; for example, <code>True Ocean</code> means the mission outcome was successfully  landed to a specific region of the ocean while <code>False Ocean</code> means the mission outcome was unsuccessfully landed to a specific region of the ocean. <code>True RTLS</code> means the mission outcome was successfully  landed to a ground pad <code>False RTLS</code> means the mission outcome was unsuccessfully landed to a ground pad.<code>True ASDS</code> means the mission outcome was successfully landed on  a drone ship <code>False ASDS</code> means the mission outcome was unsuccessfully landed on a drone ship. 
+In the data set, there are several different cases where the booster did not land successfully. Sometimes a landing was attempted but failed due to an accident:
+- <code>True Ocean</code> means the mission outcome was successfully landed to a specific region of the ocean
+- <code>False Ocean</code> means the mission outcome was unsuccessfully landed to a specific region of the ocean
+- <code>True RTLS</code> means the mission outcome was successfully landed to a ground pad
+- <code>False RTLS</code> means the mission outcome was unsuccessfully landed to a ground pad
+- <code>True ASDS</code> means the mission outcome was successfully landed on a drone ship
+- <code>False ASDS</code> means the mission outcome was unsuccessfully landed on a drone ship 
 
-The data contains several Space X  launch facilities: <a href='https://en.wikipedia.org/wiki/List_of_Cape_Canaveral_and_Merritt_Island_launch_sites'>Cape Canaveral Space</a> Launch Complex 40  <b>VAFB SLC 4E </b> , Vandenberg Air Force Base Space Launch Complex 4E <b>(SLC-4E)</b>, Kennedy Space Center Launch Complex 39A <b>KSC LC 39A </b>.
+The data contains several Space X launch facilities: <a href='https://en.wikipedia.org/wiki/List_of_Cape_Canaveral_and_Merritt_Island_launch_sites'> Cape Canaveral and Merritt Island </a>  
+- Cape Canaveral Space Launch Complex 40 <b>CCAFS SLC-40</b>
+- Vandenberg Air Force Base Space Launch Complex 4E <b>VAFB SLC 4E </b>
+- Kennedy Space Center Launch Complex 39A <b>KSC LC 39A </b>. 
 
 In this section we mainly converted those outcomes into Training Labels with `1` means the booster successfully landed `0` means it was unsuccessful.
 
@@ -45,7 +60,7 @@ Implemented Jupyter Notebook: [data-wrangling](EDA/labs-jupyter-spacex-Data%20wr
 
 ## EDA with Data Visualisation
 
-In this section, we performed some EDA and feature engineering. We examined relationships between several different features of the data set.
+In this section, we performed some EDA and feature engineering. We examined correlations between several different features of the data set.
 The most informative correlations are found to be between <code>Payload Mass vs. Number of Flights</code>, <code>Payload Mass vs. Launch Site</code>, <code>Payload Mass vs. Orbit Type</code>.
 
 ### <code>Payload Mass vs. Number of Flights</code>
@@ -111,6 +126,8 @@ library in python.​
   </table>
 </p>
 
+Implemented Jupyter Notebook: [site-location](Dashboards/spacex_launch_site_location.ipynb)
+
 ## Interactive Dashboard
 
 The Plotly dahsboards were focused on correlations between features and success rates. The following conclusions were made by analysing them:
@@ -124,6 +141,8 @@ The Plotly dahsboards were focused on correlations between features and success 
 <img width="1424" height="490" alt="KSCLC39A" src="https://github.com/user-attachments/assets/be5d7c4a-26ca-47fa-8e83-b930a5154fc0" /><em> Success rate for the KSC LC-39A</em>
 
 <img width="1427" height="715" alt="Payload" src="https://github.com/user-attachments/assets/4a1b6b77-2c06-49cf-9913-49d5d9d1cb4e" /><em>The most succeesful missions fall into 2k-6k payload mass, with FT being the most used booster version with those missions.</em>
+
+Implemented Python code: [interactive-dashboard](Dashboards/spacex-dash-app.py)
 
 ## Predictive Analysis (Classification)
 
@@ -143,6 +162,8 @@ In this section we tried to answer the main questions: what makes the launch suc
     </tr>
   </table>
 </p>
+
+Implemented Jupyter Notebook: [classification](Predictions/SpaceX_Machine_Learning_Prediction_Part_5.ipynb)
 
 ## Conclusion
 
